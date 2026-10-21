@@ -7,12 +7,7 @@ import { CopyContact } from "@/components/shared/CopyContact/CopyContact";
 import { ThemeToggle } from "@/components/shared/ThemeToggle/ThemeToggle";
 import { summarizeCart, useCartStore } from "@/store/useCartStore";
 import { formatPrice } from "@/utils/format";
-import type { Theme } from "@/utils/theme";
 import styles from "./Header.module.css";
-
-interface HeaderProps {
-  theme: Theme;
-}
 
 const links = [
   { href: "/#menu", label: "Витрина" },
@@ -21,7 +16,7 @@ const links = [
   { href: "/#delivery", label: "Доставка" },
 ];
 
-export function Header({ theme }: HeaderProps) {
+export function Header() {
   const cartItems = useCartStore((state) => state.cartItems);
   const summary = summarizeCart(cartItems);
 
@@ -57,7 +52,7 @@ export function Header({ theme }: HeaderProps) {
               {siteConfig.phoneDisplay}
             </CopyContact>
           </address>
-          <ThemeToggle theme={theme} />
+          <ThemeToggle />
           <Link
             className={styles.cart}
             href="/#cart"

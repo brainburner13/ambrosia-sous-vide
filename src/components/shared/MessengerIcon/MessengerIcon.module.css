@@ -9,19 +9,6 @@
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;
-}
-
-.telegram {
-  mask-image: url("/Telegram.svg");
-  -webkit-mask-image: url("/Telegram.svg");
-}
-
-.vk {
-  mask-image: url("/VK.svg");
-  -webkit-mask-image: url("/VK.svg");
-}
-
-.max {
-  mask-image: url("/Max.svg");
-  -webkit-mask-image: url("/Max.svg");
+  mask-image: var(--icon-mask);
+  -webkit-mask-image: var(--icon-mask);
 }

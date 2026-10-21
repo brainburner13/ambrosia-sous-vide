@@ -158,9 +158,17 @@ ul {
   scroll-margin-top: calc(var(--header-height) + 20px);
 }
 
+body:has([data-cookie-banner]) {
+  padding-bottom: 132px;
+}
+
 @media (max-width: 720px) {
   .container {
     width: min(var(--page-width), calc(100% - 32px));
+  }
+
+  body:has([data-cookie-banner]) {
+    padding-bottom: 248px;
   }
 }
 

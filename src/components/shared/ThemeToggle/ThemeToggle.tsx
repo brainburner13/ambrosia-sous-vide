@@ -1,16 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useSyncExternalStore } from "react";
 import { readCookieConsent } from "@/utils/cookieConsent";
-import { themeCookie, type Theme } from "@/utils/theme";
+import { parseTheme, themeCookie, type Theme } from "@/utils/theme";
 import styles from "./ThemeToggle.module.css";
 
-interface ThemeToggleProps {
-  theme: Theme;
+function subscribe(onStoreChange: () => void) {
+  const observer = new MutationObserver(onStoreChange);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
+  return () => observer.disconnect();
 }
 
-export function ThemeToggle({ theme }: ThemeToggleProps) {
-  const [current, setCurrent] = useState<Theme>(theme);
+function getThemeSnapshot(): Theme {
+  return parseTheme(document.documentElement.dataset.theme);
+}
+
+function getServerThemeSnapshot(): Theme {
+  return "dark";
+}
+
+export function ThemeToggle() {
+  const current = useSyncExternalStore(
+    subscribe,
+    getThemeSnapshot,
+    getServerThemeSnapshot,
+  );
   const isDark = current === "dark";
 
   function toggleTheme() {
@@ -19,7 +36,6 @@ export function ThemeToggle({ theme }: ThemeToggleProps) {
     if (readCookieConsent() === "accepted") {
       document.cookie = themeCookie(next);
     }
-    setCurrent(next);
   }
 
   return (

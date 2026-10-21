@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Onest } from "next/font/google";
-import { cookies } from "next/headers";
 import { CookieBanner } from "@/components/shared/CookieBanner/CookieBanner";
 import { siteConfig } from "@/config/site";
-import { parseTheme, THEME_COOKIE } from "@/utils/theme";
+import { themeBootScript } from "@/utils/theme";
 import "./globals.css";
 
 const sans = Inter({
@@ -20,15 +19,18 @@ const display = Onest({
   display: "swap",
 });
 
+const siteOrigin = (process.env.SITE_URL || siteConfig.url).replace(/\/$/, "");
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(siteOrigin),
   title: siteConfig.title,
   description: siteConfig.description,
   applicationName: siteConfig.nameRu,
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
-    url: "/",
+    url: `${siteOrigin}${basePath}/`,
     siteName: siteConfig.nameRu,
     locale: "ru_RU",
     type: "website",
@@ -40,19 +42,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
-
   return (
     <html
       lang="ru"
-      data-theme={theme}
+      data-theme="dark"
+      suppressHydrationWarning
       className={`${sans.variable} ${display.variable}`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+      </head>
       <body>
         {children}
         <CookieBanner />

@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { cookies } from "next/headers";
 import { Footer } from "@/components/shared/Footer/Footer";
 import { Header } from "@/components/shared/Header/Header";
 import { siteConfig } from "@/config/site";
-import { parseTheme, THEME_COOKIE } from "@/utils/theme";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -13,12 +11,10 @@ export const metadata: Metadata = {
     "Какие данные собирает Амброзия су-вид, зачем они нужны и какие права есть у пользователя.",
 };
 
-export default async function PrivacyPage() {
-  const theme = parseTheme((await cookies()).get(THEME_COOKIE)?.value);
-
+export default function PrivacyPage() {
   return (
     <div className={styles.page}>
-      <Header theme={theme} />
+      <Header />
       <main id="main" className={styles.main}>
         <article className={`container ${styles.article}`}>
           <Link href="/" className={styles.back}>

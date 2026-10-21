@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { publicPath } from "@/utils/publicPath";
 import styles from "./Hero.module.css";
 
 export function HeroVideo() {
@@ -43,7 +44,7 @@ export function HeroVideo() {
       preload="metadata"
       aria-hidden="true"
     >
-      <source src="/hero-video.webm" type="video/webm" />
+      <source src={publicPath("/hero-video.webm")} type="video/webm" />
     </video>
   );
 }
