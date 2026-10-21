@@ -1,0 +1,70 @@
+.page {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--color-text);
+  font-family: var(--font-family-body);
+}
+
+.main {
+  flex: 1;
+}
+
+.article {
+  padding: 48px 0 88px;
+}
+
+.back {
+  display: inline-flex;
+  margin-bottom: 28px;
+  color: var(--color-logo);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.back:hover {
+  color: var(--color-text);
+}
+
+.lead {
+  max-width: 68ch;
+  margin-top: 18px;
+  color: var(--color-secondary);
+}
+
+.section {
+  max-width: 68ch;
+  margin-top: 36px;
+}
+
+.section h2 {
+  margin-bottom: 12px;
+  font-family: var(--font-display), sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.section p + p,
+.section ul + p {
+  margin-top: 12px;
+}
+
+.section ul {
+  margin: 12px 0 0;
+  padding-left: 1.15em;
+  list-style: disc;
+}
+
+.section li + li {
+  margin-top: 6px;
+}
+
+.section p,
+.section li {
+  color: var(--color-text);
+}

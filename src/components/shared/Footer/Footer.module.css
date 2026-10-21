@@ -1,0 +1,116 @@
+.footer {
+  border-top: 1px solid var(--color-line);
+  padding: 28px 0 36px;
+  color: var(--color-muted);
+  font-family: var(--font-family-body);
+  font-size: 14px;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px 32px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.social {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.socialLink {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  color: var(--color-text);
+}
+
+.footer a.socialLink:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-secondary);
+  color: var(--color-logo);
+}
+
+.legal {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+}
+
+.legal div {
+  display: grid;
+  gap: 2px;
+}
+
+.legal dt {
+  color: var(--color-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.legal dd {
+  margin: 0;
+  color: var(--color-text);
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  width: 100%;
+  margin-top: 4px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-line);
+}
+
+.privacy {
+  color: var(--color-logo);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer a:hover,
+.footer button:hover,
+.privacy:hover {
+  color: var(--color-text);
+}
+
+@media (max-width: 429px) {
+  .logo {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .contacts {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .social {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}

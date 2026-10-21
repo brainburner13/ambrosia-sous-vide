@@ -1,0 +1,176 @@
+.static {
+  color: var(--color-logo);
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-logo);
+}
+
+.row {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.line {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+}
+
+.letter {
+  display: inline-block;
+}
+
+.left,
+.right {
+  --shift: calc(var(--steps) * 1em + 1.7em);
+  opacity: 0;
+  animation-duration: 0.55s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.16, 0.84, 0.32, 1);
+}
+
+.left {
+  animation-name: emergeLeft;
+}
+
+.right {
+  animation-name: emergeRight;
+}
+
+.tagline {
+  margin-top: 10px;
+  color: var(--color-text);
+  font-family: var(--font-display), sans-serif;
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  white-space: nowrap;
+  transform-origin: center top;
+}
+
+.wordmark:not(.static) .tagline {
+  opacity: 0;
+  animation: emergeDown 0.7s cubic-bezier(0.16, 0.84, 0.32, 1) both;
+}
+
+.icon {
+  position: relative;
+  z-index: 2;
+  width: 36px;
+  height: auto;
+}
+
+.wordmark:not(.static) .icon {
+  opacity: 0;
+  animation: iconIn 0.28s ease both;
+}
+
+@keyframes emergeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(var(--shift));
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes emergeRight {
+  from {
+    opacity: 0;
+    transform: translateX(calc(var(--shift) * -1));
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes emergeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-1.6em) scale(0.28);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes iconIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 980px) {
+  .line {
+    font-size: 13px;
+  }
+
+  .tagline {
+    font-size: 7px;
+    letter-spacing: 0.12em;
+  }
+
+  .icon {
+    width: 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  .line {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .tagline {
+    max-width: 220px;
+    white-space: normal;
+    text-align: center;
+    font-size: 6.5px;
+    letter-spacing: 0.08em;
+  }
+
+  .icon {
+    width: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .left,
+  .right,
+  .wordmark:not(.static) .tagline,
+  .wordmark:not(.static) .icon {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

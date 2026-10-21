@@ -1,0 +1,127 @@
+:global(body:has([data-cookie-banner])) {
+  padding-bottom: 132px;
+}
+
+.banner {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 30;
+  padding: 16px 0;
+  border-top: 1px solid var(--color-line);
+  background: var(--header-bg);
+  backdrop-filter: blur(16px);
+  font-family: var(--font-family-body);
+  animation: rise 0.45s ease both;
+}
+
+.leaving {
+  animation: sink 0.32s ease both;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+}
+
+.text {
+  max-width: 760px;
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.policy {
+  color: var(--color-logo);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.policy:hover {
+  color: var(--color-text);
+}
+
+.actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 10px;
+}
+
+.reject,
+.accept {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.reject {
+  border: 1px solid color-mix(in srgb, var(--color-secondary) 55%, transparent);
+  background: transparent;
+  color: color-mix(in srgb, var(--color-text) 62%, transparent);
+  font-weight: 600;
+}
+
+.reject:hover {
+  border-color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-secondary) 12%, transparent);
+  color: var(--color-text);
+}
+
+.accept {
+  border: 0;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-weight: 700;
+}
+
+.accept:hover {
+  background: var(--color-accent-hover);
+  box-shadow: var(--glow);
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes sink {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@media (max-width: 720px) {
+  :global(body:has([data-cookie-banner])) {
+    padding-bottom: 248px;
+  }
+
+  .inner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner,
+  .leaving {
+    animation: none;
+  }
+}

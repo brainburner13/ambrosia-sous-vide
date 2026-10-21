@@ -1,0 +1,263 @@
+.section {
+  padding: 88px 0;
+  border-top: 1px solid var(--color-line);
+}
+
+.header {
+  margin-bottom: 28px;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 520px;
+  color: var(--color-muted);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  background: var(--color-surface);
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.meta {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controls button,
+.remove,
+.clear {
+  border: 1px solid var(--color-line);
+  background: transparent;
+}
+
+.controls button {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+}
+
+.controls button:hover:not(:disabled),
+.clear:hover,
+.close:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-secondary);
+  background: color-mix(in srgb, var(--color-secondary) 16%, transparent);
+  color: var(--color-text);
+}
+
+.remove:hover {
+  transform: translateY(-1px);
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.controls button:active:not(:disabled),
+.clear:active,
+.close:active {
+  transform: translateY(0);
+  background: color-mix(in srgb, var(--color-secondary) 24%, transparent);
+}
+
+.remove:active {
+  transform: translateY(0);
+  border-color: var(--color-accent-hover);
+  background: var(--color-accent-hover);
+  color: var(--color-on-accent);
+}
+
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+.controls span {
+  min-width: 1.2em;
+  text-align: center;
+  font-weight: 700;
+}
+
+.linePrice {
+  font-weight: 700;
+}
+
+.remove,
+.clear {
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.summary,
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+}
+
+.summary {
+  gap: 8px;
+  position: sticky;
+  top: calc(var(--header-height) + 16px);
+}
+
+.form {
+  border: 0;
+  background: transparent;
+}
+
+.totalLabel {
+  color: var(--color-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.total {
+  margin: 8px 0;
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.note {
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.label {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-line);
+  background: var(--background);
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--color-accent);
+}
+
+.error {
+  margin-top: 6px;
+  color: var(--color-accent);
+  font-size: 13px;
+}
+
+.dialog {
+  width: min(440px, calc(100% - 32px));
+  padding: 0;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: var(--shadow);
+}
+
+.dialog::backdrop {
+  background: rgba(22, 23, 25, 0.66);
+}
+
+.dialogHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dialogTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.close {
+  min-height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--color-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.checkout,
+.channel {
+  width: 100%;
+}
+
+.channel.channel:hover {
+  border-color: var(--color-logo);
+  background: var(--color-logo);
+  color: #141517;
+}
+
+.clear {
+  align-self: flex-start;
+  margin-top: 6px;
+}
+
+@media (max-width: 860px) {
+  .layout,
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
